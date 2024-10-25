@@ -12,6 +12,8 @@ permissions:
 
 jobs:
   main:
+    env:
+      NX_CLOUD_NPM_LEGACY_INSTAL: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
