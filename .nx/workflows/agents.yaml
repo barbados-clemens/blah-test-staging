@@ -5,20 +5,6 @@ launch-templates:
     init-steps:
       - name: Checkout
         uses: 'nrwl/nx-cloud-workflows/v4/workflow-steps/checkout/main.yaml'
-      - name: Restore Node Modules Cache
-        uses: 'nrwl/nx-cloud-workflows/v4/workflow-steps/cache/main.yaml'
-        inputs:
-          key: 'package-lock.json|yarn.lock|pnpm-lock.yaml'
-          paths: 'node_modules'
-          base-branch: 'main'
-      - name: Restore Browser Binary Cache
-        uses: 'nrwl/nx-cloud-workflows/v4/workflow-steps/cache/main.yaml'
-        inputs:
-          key: 'package-lock.json|yarn.lock|pnpm-lock.yaml|"browsers"'
-          paths: |
-            '../.cache/Cypress'
-            '../.cache/ms-playwright'
-          base-branch: 'main'
       - name: Install Node Modules
         uses: 'nrwl/nx-cloud-workflows/retry-node-module-install-test/workflow-steps/install-node-modules/main.yaml'
       - name: Install Browsers (if needed)
